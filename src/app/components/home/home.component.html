@@ -1,0 +1,23 @@
+<div fxLayout="column">
+
+  <div fxLayout="row">
+    <div fxFlex
+         fxFlexOffset="25">
+      <mat-form-field>
+        <input matInput placeholder="Input">
+      </mat-form-field>
+      <button mat-raised-button color="primary">Search</button>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <mat-nav-list>
+      <a mat-list-item *ngFor="let restaurantName of restaurantDetails" routerLink="/review/{{restaurantName.id}}">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <h4 mat-line>{{restaurantName.name}}</h4>
+        <!--<p mat-line> {{restaurantName.address}} </p>-->
+      </a>
+    </mat-nav-list>
+  </div>
+
+</div>

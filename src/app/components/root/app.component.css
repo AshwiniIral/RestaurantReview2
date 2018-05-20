@@ -1,0 +1,33 @@
+.view-container {
+  position: fixed;
+  left: 30%;
+  top: 18%;
+  width: 500px;
+  height: 500px;
+  overflow-y: auto;
+  background-image: url('/assets/image/background.jpg');
+}
+
+.header-style {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+mat-sidenav-content {
+  height: 90vh;
+  overflow-y: auto;
+  margin: auto;
+}
+
+/*mat-sidenav {*/
+  /*width: 200px;*/
+/*}*/
+
+.backimage {
+  background-image: url('/assets/image/background2.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-blend-mode: luminosity;
+}

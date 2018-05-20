@@ -1,0 +1,142 @@
+<mat-horizontal-stepper [linear]="true">
+  <mat-step>
+    <ng-template matStepLabel>About</ng-template>
+    <div>
+      <mat-card class="card1-style">
+        <mat-card-header>
+          <mat-icon mat-card-avatar>restaurant</mat-icon>
+          <mat-card-title>{{restaurantDetails.name}}</mat-card-title>
+          <mat-card-subtitle>{{restaurantDetails.address}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="description-style">
+            {{restaurantDetails.description}}
+          </p>
+          <div fxLayout="row" class="review-slider-contents">
+            <div fxFlex>Food
+              <div fxLayout="row" fxLayoutGap="5px">
+                <p fxFlex="10" class="customer-review-on">.</p>
+                <p fxFlex="10" class="customer-review-on">.</p>
+                <p fxFlex="10" class="customer-review-on">.</p>
+                <p fxFlex="10" class="customer-review-off">.</p>
+                <p fxFlex="10" class="customer-review-off">.</p>
+              </div>
+            </div>
+            <div fxFlex>Ambiance
+              <div fxLayout="row" fxLayoutGap="5px">
+                <p fxFlex="10" class="customer-review-on">.</p>
+                <p fxFlex="10" class="customer-review-on">.</p>
+                <p fxFlex="10" class="customer-review-off">.</p>
+                <p fxFlex="10" class="customer-review-off">.</p>
+                <p fxFlex="10" class="customer-review-off">.</p>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px" class="button-style">
+      <button mat-raised-button (click)="backHome()" color="primary">Back</button>
+      <button mat-raised-button (click)="review = false" color="primary" matStepperNext>Book a Table</button>
+      <button mat-raised-button (click)="review = true" color="primary" matStepperNext>Review</button>
+    </div>
+  </mat-step>
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Details</ng-template>
+      <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="review">
+        <mat-form-field>
+          <input matInput value={{restaurantDetails.name}} disabled="true">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput value={{restaurantDetails.address}} disabled="true">
+        </mat-form-field>
+        <mat-slider
+          class="review-slider"
+          [max]="5"
+          [min]="0"
+          [step]="1"
+          [thumb-label]="true">
+        </mat-slider>
+        <mat-form-field>
+          <textarea matInput placeholder="comments" formControlName="reviewCtrl" required
+                    matTextareaAutosize matAutosizeMinRows="2"
+                    matAutosizeMaxRows="5"
+                    [(ngModel)]="userComments">
+          </textarea>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="space-around center" *ngIf="!review"> <!--book-->
+
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" placeholder="Choose a date" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker disabled="false"></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Time" required>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput type="number" [min]="1" placeholder="Number of Guests" required>
+          <!--formControlName="guestCtrl" >-->
+        </mat-form-field>
+
+        <mat-form-field>
+           <textarea matInput placeholder="Special Request" required
+                     matTextareaAutosize matAutosizeMinRows="2"
+                     matAutosizeMaxRows="5"></textarea>
+        </mat-form-field>
+
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>My Details</ng-template>
+      <div fxLayout="column" fxLayoutAlign="space-around center">
+        <mat-form-field>
+          <input matInput placeholder="Name" formControlName="nameCtrl" [(ngModel)]="userName" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Contact" formControlName="contactCtrl" [(ngModel)]="contact"
+                 required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Email" formControlName="emailCtrl" [(ngModel)]="email" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="address" formControlName="addressCtrl" [(ngModel)]="address" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+          <button mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Confirm</ng-template>
+
+    <div fxLayout="column" fxLayoutAlign="space-around center">
+      Thankyou
+      <div>{{userName}}</div>
+      <div>
+        <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+      </div>
+    </div>
+  </mat-step>
+
+</mat-horizontal-stepper>

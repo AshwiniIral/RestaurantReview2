@@ -1,0 +1,45 @@
+.review-slider {
+  display: flex;
+  height: 25px;
+  width: 200px;
+  align-content: center;
+  align-items: center;
+  margin: 16px;
+}
+
+.description-style {
+  height: 150px;
+  overflow-y: auto;
+  /*padding: 0 0 0 5%;*/
+}
+
+.card1-style {
+  width: 400px;
+  height: 300px; /*225*/
+}
+
+.button-style {
+  padding: 0 0 0 60px;
+}
+
+.review-slider-contents {
+  padding: 5px 0 10px 60px;
+}
+
+.customer-review-off {
+  min-height: 20px;
+  background-color: rgba(0, 0, 0, .38); /* #3f51b5 */
+  border-color: black;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+}
+
+.customer-review-on {
+  min-height: 20px;
+  background-color: #3f51b5;
+  border-color: black;
+  border-style: solid;
+  border-width: thin;
+  border-radius: 5px;
+}
